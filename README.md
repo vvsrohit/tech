@@ -1,3 +1,57 @@
+Tech Challenge — Next.js Demo
+=================================
+
+A small Next.js (App Router) demo that serves a simple landing page. It provides a minimal starting point for UI improvements and small backend additions.
+
+Purpose
+-------
+
+- Showcase a basic Next.js app and project layout
+- Provide a lightweight starter for feature work and contributions
+
+Requirements
+------------
+
+- Node.js 18 or newer
+- npm (bundled with Node)
+
+Install
+-------
+
+```bash
+npm install
+```
+
+Get Started (development)
+-------------------------
+
+```bash
+npm run dev
+# open http://localhost:3000
+```
+
+Build & Run (production)
+-------------------------
+
+```bash
+npm run build
+npm start
+```
+
+Important Files
+---------------
+
+- `src/app/page.js` — landing page (edit this to change content)
+- `src/app/globals.css` — global styles
+- `package.json` — project scripts (`dev`, `build`, `start`, `lint`)
+
+Contributing
+------------
+
+- Create a feature branch: `git checkout -b feat/your-feature`
+- Commit and open a pull request for review
+
+If you'd like, I can add a short CONTRIBUTING guide or an example test next.
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

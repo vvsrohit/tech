@@ -1,3 +1,4 @@
+// This component renders the main landing page for the IEEE PatchFest Tech Challenge application.
 import Image from "next/image";
 
 export default function Home() {

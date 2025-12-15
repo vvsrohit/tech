@@ -83,3 +83,58 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## UI Documentation
+
+The project utilizes a reusable UI component library located in `src/components/ui/`.
+
+### Button
+Supports multiple variants and sizes. Can function as a `<button>` or `<Link>` depending on the `href` prop.
+```jsx
+import Button from '@/components/ui/Button';
+
+<Button variant="primary" size="md" onClick={() => {}}>Click Me</Button>
+<Button variant="outline" href="/about">Link Button</Button>
+```
+**Props:**
+- `variant`: primary | secondary | outline | ghost | destructive (default: primary)
+- `size`: sm | md | lg | icon (default: md)
+- `href`: string (optional)
+
+### Card
+A glassmorphism card component for framing content.
+```jsx
+import Card from '@/components/ui/Card';
+
+<Card className="p-4" hover>
+  Content here...
+</Card>
+```
+**Props:**
+- `hover`: boolean - enables hover lift effect (default: false)
+- `className`: string - additional classes
+
+### Input
+Standard input field with label and error support.
+```jsx
+import Input from '@/components/ui/Input';
+
+<Input label="Email" error={errorMessage} placeholder="user@example.com" />
+```
+**Props:**
+- `label`: string (optional)
+- `error`: string (optional)
+
+### Modal
+Accessible dialog overlay.
+```jsx
+import Modal from '@/components/ui/Modal';
+
+<Modal isOpen={isOpen} onClose={closeModal} title="My Modal">
+  Modal content...
+</Modal>
+```
+**Props:**
+- `isOpen`: boolean
+- `onClose`: function
+- `title`: string (optional)

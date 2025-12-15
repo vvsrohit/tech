@@ -1,10 +1,16 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="page-root min-h-screen font-sans bg-gray-50 dark:bg-black text-slate-900 dark:text-slate-100">
       <header className="site-header bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b border-gray-200 dark:border-zinc-800">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          {/* Brand */}
           <div className="flex items-center gap-4">
             <Image
               src="/globe.svg"
@@ -19,7 +25,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <nav className="flex items-center gap-4">
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-4">
             <a href="#schedule" className="text-sm hover:underline">
               Schedule
             </a>
@@ -30,9 +38,54 @@ export default function Home() {
               Register
             </a>
           </nav>
+
+          {/* Mobile Hamburger */}
+          <button
+            className="md:hidden flex items-center justify-center w-10 h-10 rounded hover:bg-gray-100 dark:hover:bg-zinc-800"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="Toggle navigation"
+          >
+            <div className="space-y-1.5">
+              <span className="block w-6 h-0.5 bg-current"></span>
+              <span className="block w-6 h-0.5 bg-current"></span>
+              <span className="block w-6 h-0.5 bg-current"></span>
+            </div>
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ${
+            menuOpen ? "max-h-56" : "max-h-0"
+          }`}
+        >
+          <nav className="px-6 pb-4 flex flex-col gap-3">
+            <a
+              href="#schedule"
+              className="text-sm"
+              onClick={() => setMenuOpen(false)}
+            >
+              Schedule
+            </a>
+            <a
+              href="#speakers"
+              className="text-sm"
+              onClick={() => setMenuOpen(false)}
+            >
+              Speakers
+            </a>
+            <a
+              href="#register"
+              className="btn btn-primary text-sm w-fit"
+              onClick={() => setMenuOpen(false)}
+            >
+              Register
+            </a>
+          </nav>
         </div>
       </header>
 
+      {/* MAIN CONTENT — unchanged */}
       <main className="container mx-auto px-6 py-12">
         <section className="hero grid gap-8 md:grid-cols-2 items-center">
           <div>
@@ -105,28 +158,16 @@ export default function Home() {
           <h2 className="text-2xl font-semibold">Speakers</h2>
           <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="p-4 bg-white/60 dark:bg-white/5 rounded">
-              <div className="text-xl font-semibold">
-                Dr. Priya Saxena
-              </div>
-              <div className="text-sm text-slate-500">
-                AI Researcher
-              </div>
+              <div className="text-xl font-semibold">Dr. Priya Saxena</div>
+              <div className="text-sm text-slate-500">AI Researcher</div>
             </div>
             <div className="p-4 bg-white/60 dark:bg-white/5 rounded">
-              <div className="text-xl font-semibold">
-                Karan Mehta
-              </div>
-              <div className="text-sm text-slate-500">
-                Cloud Architect
-              </div>
+              <div className="text-xl font-semibold">Karan Mehta</div>
+              <div className="text-sm text-slate-500">Cloud Architect</div>
             </div>
             <div className="p-4 bg-white/60 dark:bg-white/5 rounded">
-              <div className="text-xl font-semibold">
-                Nisha Verma
-              </div>
-              <div className="text-sm text-slate-500">
-                Product Manager
-              </div>
+              <div className="text-xl font-semibold">Nisha Verma</div>
+              <div className="text-sm text-slate-500">Product Manager</div>
             </div>
           </div>
         </section>

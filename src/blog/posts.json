@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Getting Started with Open Source",
+    "slug": "getting-started-open-source",
+    "excerpt": "A beginner-friendly guide to contributing to open source.",
+    "date": "2025-01-12"
+  },
+  {
+    "title": "Understanding Git Like a Pro",
+    "slug": "understanding-git",
+    "excerpt": "Learn Git concepts that every developer should know.",
+    "date": "2025-01-20"
+  },
+  {
+    "title": "Why IEEE Communities Matter",
+    "slug": "ieee-communities",
+    "excerpt": "How technical communities shape your career.",
+    "date": "2025-02-01"
+  }
+]

@@ -1,86 +1,20 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Define the colors for Dark Mode */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* --- Landing page helpers for IEEE Dholakpur demo --- */
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  padding: 0.6rem 1rem;
-  border-radius: 9999px;
-  text-decoration: none;
-}
-.btn-primary {
-  background: #0f62fe;
-  color: white;
-}
-.btn-outline {
-  background: transparent;
-  border: 1px solid rgba(15,98,254,0.12);
-  color: #0f62fe;
-}
-.large { padding: 0.9rem 1.2rem; font-weight: 600; }
-.hero-art img { border-radius: 10px; }
-.brand-title { font-size: 1.05rem; }
-.muted { color: #6b7280; }
-
-@media (prefers-color-scheme: dark) {
-  .btn-outline { border-color: rgba(255,255,255,0.08); color: #cbd5e1; }
-}
-/* Hero Section Animations */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-up {
-  animation: fadeUp 0.8s ease-out forwards;
-  opacity: 0; /* Hidden initially */
-}
-
-.delay-100 {
-  animation-delay: 0.1s;
-}
-
-.delay-200 {
-  animation-delay: 0.2s;
-}
-
-.delay-300 {
-  animation-delay: 0.3s;
+  background: var(--background);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }

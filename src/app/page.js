@@ -1,24 +1,22 @@
-import Image from "next/image";
+import ThemeToggle from "../components/ThemeToggle";
 
 export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       
-      {/* Main Content Area */}
+      {/* The Floating Toggle Button */}
+      <ThemeToggle />
+
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start text-center sm:text-left">
-        
-        {/* Animated Heading */}
-        <h1 className="text-4xl font-bold animate-fade-up">
+        <h1 className="text-4xl font-bold">
           IEEE PatchFest Tech Challenge
         </h1>
         
-        {/* Animated Paragraph with delay */}
-        <p className="text-lg animate-fade-up delay-100">
-          Welcome to the challenge! Start by checking the issues list.
+        <p className="text-lg">
+          Welcome to the challenge! Toggle the theme to see the magic. 🌙
         </p>
 
-        {/* Animated Buttons with more delay */}
-        <div className="flex gap-4 justify-center sm:justify-start animate-fade-up delay-200">
+        <div className="flex gap-4 justify-center sm:justify-start">
           <a 
             href="https://github.com/IEEE-PatchFest/tech/issues" 
             target="_blank"
@@ -26,17 +24,10 @@ export default function Home() {
           >
             View Issues
           </a>
-          <a 
-             href="https://github.com/IEEE-PatchFest/tech"
-             className="rounded-full border border-gray-300 px-6 py-2 hover:bg-gray-100 transition-colors dark:hover:bg-gray-800"
-          >
-            View Repository
-          </a>
         </div>
-        
       </main>
 
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center animate-fade-up delay-300">
+      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center text-sm opacity-75">
         <p>Built for the IEEE PatchFest Hackathon</p>
       </footer>
     </div>

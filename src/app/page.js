@@ -9,7 +9,9 @@ export default function Home() {
             <Image src="/globe.svg" alt="IEEE Dholakpur" width={44} height={44} />
             <div>
               <div className="text-lg font-semibold">IEEE Dholakpur</div>
-              <div className="text-xs text-slate-500 dark:text-slate-400">Tech Summit · Community Meetup · Dec 2026</div>
+              <div className="text-xs text-slate-500 dark:text-slate-400">
+                Tech Summit · Community Meetup · Dec 2026
+              </div>
             </div>
           </div>
           <nav className="flex items-center gap-4">
@@ -23,8 +25,14 @@ export default function Home() {
       <main className="container mx-auto px-6 py-12">
         <section className="hero grid gap-8 md:grid-cols-2 items-center">
           <div>
-            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">IEEE Dholakpur — Build the future</h1>
-            <p className="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-xl">Join local engineers, students, and entrepreneurs for two days of talks, hands-on workshops, and a community hackathon. Learn from practitioners and ship something cool.</p>
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+              IEEE Dholakpur — Build the future
+            </h1>
+            <p className="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-xl">
+              Join local engineers, students, and entrepreneurs for two days of talks,
+              hands-on workshops, and a community hackathon. Learn from practitioners
+              and ship something cool.
+            </p>
 
             <div className="mt-6 flex gap-3">
               <a id="register" href="#" className="btn btn-primary large">Get Tickets</a>
@@ -53,7 +61,7 @@ export default function Home() {
         </section>
 
         <section id="schedule" className="mt-14 bg-white/60 dark:bg-white/3 p-6 rounded">
-          <h2 className="text-2xl font-semibold">Schedule (High level)</h2>
+          <h2 className="text-2xl font-semibold">Schedule (High-level)</h2>
           <ul className="mt-4 list-disc pl-5 text-slate-600 dark:text-slate-300">
             <li><strong>Day 1:</strong> Keynotes, workshops, lightning talks</li>
             <li><strong>Day 2:</strong> Mini-hackathon, demos, awards</li>

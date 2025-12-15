@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 export default function Home() {
+
   return (
     <div className="page-root min-h-screen font-sans bg-gray-50 dark:bg-black text-slate-900 dark:text-slate-100">
       <header className="site-header bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b border-gray-200 dark:border-zinc-800">

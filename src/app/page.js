@@ -5,6 +5,7 @@ import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
 import Modal from "../components/ui/Modal";
 import Input from "../components/ui/Input";
+import ScrollToTop from "../components/ScrollToTop";
 
 export default function Home() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -133,6 +134,8 @@ export default function Home() {
           </div>
         </form>
       </Modal>
+
+      <ScrollToTop />
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Testimonials from "../components/Testimonials";
 
 export default function Home() {
   return (
@@ -18,7 +17,7 @@ export default function Home() {
           Welcome to the challenge! Start by checking the issues list.
         </p>
 
-        {/* Animated Buttons/Action Area with more delay */}
+        {/* Animated Buttons with more delay */}
         <div className="flex gap-4 justify-center sm:justify-start animate-fade-up delay-200">
           <a 
             href="https://github.com/IEEE-PatchFest/tech/issues" 
@@ -28,16 +27,11 @@ export default function Home() {
             View Issues
           </a>
           <a 
-             href="#testimonials"
+             href="https://github.com/IEEE-PatchFest/tech"
              className="rounded-full border border-gray-300 px-6 py-2 hover:bg-gray-100 transition-colors dark:hover:bg-gray-800"
           >
-            See Testimonials
+            View Repository
           </a>
-        </div>
-
-        {/* Testimonials Component appearing last */}
-        <div className="animate-fade-up delay-300 w-full">
-          <Testimonials /> 
         </div>
         
       </main>

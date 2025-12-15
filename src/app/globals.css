@@ -56,3 +56,31 @@ body {
 @media (prefers-color-scheme: dark) {
   .btn-outline { border-color: rgba(255,255,255,0.08); color: #cbd5e1; }
 }
+/* Hero Section Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
+  opacity: 0; /* Hidden initially */
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}

@@ -1,91 +1,135 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { fetchProducts } from "../services/products";
 
 export default function Home() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [retry, setRetry] = useState(0);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadProducts() {
+      setLoading(true);
+      setError(false);
+
+      try {
+        const data = await fetchProducts(controller.signal);
+        if (data) setProducts(data);
+      } catch {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadProducts();
+    return () => controller.abort();
+  }, [retry]);
+
   return (
     <div className="page-root min-h-screen font-sans bg-gray-50 dark:bg-black text-slate-900 dark:text-slate-100">
+      {/* HEADER */}
       <header className="site-header bg-white/80 dark:bg-black/80 backdrop-blur-sm border-b border-gray-200 dark:border-zinc-800">
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Image src="/globe.svg" alt="IEEE Dholakpur" width={44} height={44} />
             <div>
               <div className="text-lg font-semibold">IEEE Dholakpur</div>
-              <div className="text-xs text-slate-500 dark:text-slate-400">Tech Summit · Community Meetup · Dec 2026</div>
+              <div className="text-xs text-slate-500 dark:text-slate-400">
+                Tech Summit · Community Meetup · Dec 2026
+              </div>
             </div>
           </div>
-          <nav className="flex items-center gap-4">
-            <a href="#schedule" className="text-sm hover:underline">Schedule</a>
-            <a href="#speakers" className="text-sm hover:underline">Speakers</a>
-            <a href="#register" className="btn btn-primary text-sm">Register</a>
-          </nav>
         </div>
       </header>
 
+      {/* MAIN */}
       <main className="container mx-auto px-6 py-12">
+        {/* HERO */}
         <section className="hero grid gap-8 md:grid-cols-2 items-center">
           <div>
-            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">IEEE Dholakpur — Build the future</h1>
-            <p className="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-xl">Join local engineers, students, and entrepreneurs for two days of talks, hands-on workshops, and a community hackathon. Learn from practitioners and ship something cool.</p>
-
-            <div className="mt-6 flex gap-3">
-              <a id="register" href="#" className="btn btn-primary large">Get Tickets</a>
-              <a href="#schedule" className="btn btn-outline">View Schedule</a>
-            </div>
-
-            <div className="mt-8 grid grid-cols-3 gap-3 max-w-md">
-              <div className="p-3 bg-white/60 dark:bg-white/5 rounded shadow-sm">
-                <div className="text-sm text-slate-500">Workshops</div>
-                <div className="font-semibold">3 Tracks</div>
-              </div>
-              <div className="p-3 bg-white/60 dark:bg-white/5 rounded shadow-sm">
-                <div className="text-sm text-slate-500">Hackathon</div>
-                <div className="font-semibold">Team & Solo</div>
-              </div>
-              <div className="p-3 bg-white/60 dark:bg-white/5 rounded shadow-sm">
-                <div className="text-sm text-slate-500">Networking</div>
-                <div className="font-semibold">Mentors</div>
-              </div>
-            </div>
+            <h1 className="text-4xl md:text-5xl font-extrabold">
+              IEEE Dholakpur — Build the future
+            </h1>
+            <p className="mt-4 text-lg text-slate-600 dark:text-slate-300">
+              Talks, workshops, hackathons, and community learning.
+            </p>
           </div>
-
-          <div className="hero-art flex justify-center">
+          <div className="flex justify-center">
             <Image src="/file.svg" alt="illustration" width={480} height={320} />
           </div>
         </section>
 
-        <section id="schedule" className="mt-14 bg-white/60 dark:bg-white/3 p-6 rounded">
-          <h2 className="text-2xl font-semibold">Schedule (High level)</h2>
-          <ul className="mt-4 list-disc pl-5 text-slate-600 dark:text-slate-300">
-            <li><strong>Day 1:</strong> Keynotes, workshops, lightning talks</li>
-            <li><strong>Day 2:</strong> Mini-hackathon, demos, awards</li>
-          </ul>
-        </section>
+        {/* PRODUCTS SECTION */}
+        <section className="mt-16">
+          <h2 className="text-2xl font-semibold mb-6">
+            Community Store (Live API)
+          </h2>
 
-        <section id="speakers" className="mt-8">
-          <h2 className="text-2xl font-semibold">Speakers</h2>
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div className="p-4 bg-white/60 dark:bg-white/5 rounded">
-              <div className="text-xl font-semibold">Dr. Priya Saxena</div>
-              <div className="text-sm text-slate-500">AI Researcher</div>
+          {/* Loading */}
+          {loading && (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="animate-pulse bg-white/60 dark:bg-white/5 rounded-xl p-4 space-y-3"
+                >
+                  <div className="h-32 bg-gray-200 dark:bg-zinc-700 rounded" />
+                  <div className="h-4 bg-gray-200 dark:bg-zinc-700 rounded w-3/4" />
+                  <div className="h-4 bg-gray-200 dark:bg-zinc-700 rounded w-1/2" />
+                </div>
+              ))}
             </div>
-            <div className="p-4 bg-white/60 dark:bg-white/5 rounded">
-              <div className="text-xl font-semibold">Karan Mehta</div>
-              <div className="text-sm text-slate-500">Cloud Architect</div>
+          )}
+
+          {/* Error */}
+          {error && (
+            <div className="text-center py-12">
+              <p className="text-red-600 mb-4">
+                Failed to load products
+              </p>
+              <button
+                onClick={() => setRetry((r) => r + 1)}
+                className="px-5 py-2 rounded bg-black text-white"
+              >
+                Retry
+              </button>
             </div>
-            <div className="p-4 bg-white/60 dark:bg-white/5 rounded">
-              <div className="text-xl font-semibold">Nisha Verma</div>
-              <div className="text-sm text-slate-500">Product Manager</div>
+          )}
+
+          {/* Data */}
+          {!loading && !error && (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {products.map((item) => (
+                <div
+                  key={item.id}
+                  className="bg-white/60 dark:bg-white/5 rounded-xl p-4 hover:shadow-lg transition"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="h-32 mx-auto object-contain"
+                  />
+                  <h3 className="mt-4 text-sm font-semibold line-clamp-2">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 font-bold">${item.price}</p>
+                </div>
+              ))}
             </div>
-          </div>
+          )}
         </section>
       </main>
 
-      <footer className="site-footer border-t border-gray-200 dark:border-zinc-800">
-        <div className="container mx-auto px-6 py-6 flex items-center justify-between text-sm text-slate-600 dark:text-slate-400">
-          <div>© {new Date().getFullYear()} IEEE Dholakpur</div>
-          <div className="flex items-center gap-3">
-            <a href="#">Code of Conduct</a>
-            <a href="#">Contact</a>
-          </div>
+      {/* FOOTER */}
+      <footer className="border-t border-gray-200 dark:border-zinc-800">
+        <div className="container mx-auto px-6 py-6 text-sm text-slate-600 dark:text-slate-400">
+          © {new Date().getFullYear()} IEEE Dholakpur
         </div>
       </footer>
     </div>
